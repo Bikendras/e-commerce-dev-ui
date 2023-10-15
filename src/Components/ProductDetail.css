@@ -1,0 +1,114 @@
+.product_main{
+    /* width: 96rem; */
+    height: 25rem;
+    margin: auto; 
+}
+.product_main{
+    width: 23.3%;
+    float: left;
+    margin: 2% 1% 0% 1%;
+    box-shadow: 0 0px 7px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    display: flex;
+}
+.product_main1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.product_img1{
+    width: 35%;
+    margin: 20px 20px 0px 10px;
+}
+.addcart1{
+    padding: 01% 8%;
+    border: 2px solid #000000;
+    color: #ffffff;
+    background-color: #6CA7DD;
+}
+.addcart1:hover{
+    background-color: #ffffff;
+    color: #000000;
+    transition: 1s;
+}
+.buybtn1{
+    padding: 01% 10%;
+    border: 2px solid #000000;
+    color: #000000;
+}
+.buybtn1:hover{
+    background-color: #6CA7DD;
+    color: #ffffff;
+    transition: 1s;
+}
+.Detail_1{
+    margin-top: 20px;
+}
+.Detail_1 span{
+    border-bottom: 3px solid  #6CA7DD;
+    font-size:larger !important;
+    font-weight: bold;
+}
+.Description{
+    width: 50%;
+    margin: 1vw 2vw;
+    list-style-type: none;
+    /* display: flex; */
+}
+.Description h1{
+    border-bottom: 3px solid  #6CA7DD;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.card_img1{
+    width: 25vw;
+    height: 50vh;
+    margin: 3%;
+    object-fit: fill;
+    margin: 20px 20px 0px 10px;
+}
+/* payment Process */
+.checkout{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.Payment_product_img{
+    width: 35vw;
+    margin: 20px 20px 0px 10px;
+}
+.payment{
+    width: 60%;
+    background-color: #dce1e5;
+    margin-top: 1%;
+    border-radius: 10px;
+}
+.payment h2{
+    display: inline-block;
+    margin-top: 5vh;
+    margin-bottom: 10px;
+    border-bottom: 3px solid rgb(108, 167, 221);
+}
+.selectBox_PaymentOption{
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 4px;
+    font-weight: bold;
+}
+.Payment__Continue{
+    padding: 01% 8%;
+    border: 2px solid #000000;
+    color: #ffffff;
+    background-color: #6CA7DD;
+}
+.Payment__Continue:hover{
+    background-color: #ffffff;
+    color: #000000;
+    transition: 1s;
+}
+
+
+/* .imgpro img{
+    width: 100%;
+    height:240px;
+    object-fit: fill;
+} */

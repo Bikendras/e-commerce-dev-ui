@@ -1,0 +1,48 @@
+.marchant_main{
+    width: 50vw;
+    height: 522px;
+}
+.marchant_form_1{
+    width: 100%;
+    padding: 40px;
+    border-radius: 10px;
+}
+.marchant_form_group1{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+.marchant_form_group1 label{
+    /* width: 20%; */
+    text-align: left;
+    padding: 0px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.marchant_form_group1 input{
+    height: 30px;
+    width: 40%;
+}
+.marchant_button1{
+    padding-top: 3%;
+    margin-left: 12vw;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* display: flex; */
+}
+.marchant_button1 button{
+    font-size: 17px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+

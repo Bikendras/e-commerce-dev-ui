@@ -1,0 +1,47 @@
+.About_main, .business_main{
+    height: auto;
+    width: 99%;
+    display: flex;
+    margin: 10px;
+}
+.about_img{
+    filter: hue-rotate(18deg);
+    max-width: 450px;
+    float: left;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+.about_contant{
+    margin-top: 50px;
+}
+.about_contant h3, .business_contant h3{
+    margin: 5px;
+}
+.about_contant p, .business_contant p{
+    margin: 25px;
+}
+.Provide_Quelity
+{
+    margin-top: 20px;
+    width: 70%;
+    margin:auto;
+    text-align: center;
+}
+.business_contant{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    float: left;
+}
+/* Contact_US page */
+.contact h2{
+    /* width: 96rem; */
+    height: 32rem; 
+}
+/* Product page */
+.product h2{
+    /* width: 96rem; */
+    height: 32rem; 
+}
+

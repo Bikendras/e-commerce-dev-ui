@@ -1,0 +1,212 @@
+*{
+    /* width: 100%; */
+    margin: 0%;
+    padding: 0%;
+}
+/* Searchbar */
+.head{
+    /* width: 100%; */
+    /* background: linear-gradient(#000000, green, rgb(108, 167, 221), yellow); */
+    background-color: rgb(108, 167, 221) ;
+    color: white;
+    display: flex; 
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+.One {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 18px; 
+    color: #000000;
+    /* background-image: url(E:/bikendra/Bikendra/Domain/frontend/public/OneTech_image.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; */
+
+}
+.One::selection{
+    color: #000000;
+}
+.Dynamic_name{
+    color: #fff;
+    -webkit-text-stroke: 1px #000000;
+    color: transparent;
+}
+.Dynamic_name::selection{
+    color: #000000; 
+}
+.log_1{
+    margin-top: 2%;
+    width: 40%;
+}
+.login_cart_customer{
+    display: flex;
+    justify-content: space-between;
+}
+.userOutline{
+    padding:4px 10px;
+    margin:0px 15px;
+    border-radius:50%;
+    border:2px solid rgb(255, 255, 255);
+    /* background: linear-gradient(orange,purple,blue,black);    */
+}
+.log{
+    margin-top: 28px;
+}
+.log_button{
+    height: 40px;
+}
+.cart{
+    font-size: 20px;
+    height: 25px;
+    width: auto;
+    margin-left: 15px;
+}
+.cart2{
+    color: #fff;
+}
+.cart .cart_img{
+    margin-top: 30px;
+    height: 25px;
+}
+.cust, .cust1{
+    font-size: 15px;
+    margin-top: 30px;
+    margin-left: 15px;
+    text-align: center;
+}
+@media (max-width: 600px){
+    .head{
+        width: 100% !important;
+        height: 45px;
+        display: flex;
+        justify-content: space-between;
+        /* padding-bottom: 5px; */
+    }
+    .One {
+        font-size: 10px;
+        color: #ffffff;
+    }
+    .Dynamic_name{
+        font-size: 10px;
+        color: #000000;
+    }
+    .log_1{
+        margin-top: 13px;
+        /* width: 40%; */
+    }.cust{
+        margin-top: 13px;
+    }
+    .name{
+        display: none !important;
+    }
+    .userOutline{
+        padding:2px 4px;
+        margin:0px 10px;
+        border-radius:50%;
+        border:1px solid black;
+    }
+    .log{
+        margin-top: 13px;
+    }
+    .log_button{
+        height: 30px;
+    }
+    .cart{
+        font-size: 8px;
+        height: 15px;
+        margin-top: -15PX;
+        margin-left: 5px;
+    }
+    .cart2{
+        font-size: 10px;
+    }
+    .cart .cart_img{
+        margin-top: 30px;
+        height: 20px;
+    }
+    .cust1{
+        display: none;
+    }
+    /* Topbar  */
+    .topbar{
+        width: 100% !important;
+        /* padding: 0px 15px 0px 15px; */
+    }  
+    .nav ul li{
+        list-style-type: none;
+        /* padding: 5px 0px 5px 5px; */
+    }
+    .nav ul li a{
+        font-size: 8px;
+    }
+}
+
+
+/* Navbar */
+.topbar{
+    width: 100%;
+    background: #0D1824;
+    display: flex;
+    justify-content:space-between;
+}
+/* .topbar .active {
+    color:  white;
+    background-color: #e6331b;
+    padding: 20px 15px 20px 15px;
+} */
+
+.topbar .active:hover{
+    color: #ffffff !important;
+}
+.nav ul{
+    display: flex;
+}
+.nav ul li{
+    list-style-type: none;
+    padding: 20px 15px 20px 15px;
+}
+.nav ul li:hover{
+    background: rgb(108, 167, 221);
+    color: #fff ;
+    transition:1s linear;
+}
+.nav ul li a{
+    font-size:18px;
+    color:#fff;
+}
+.footer{
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* Left Navbar */
+/* .Category{
+    height: 100%;
+    width: 15%;
+    background-color: black;
+    font-weight: bold;
+    font-size: 20px;
+    float: left;
+    padding-bottom: 10px;   
+}
+.Category ul {
+    margin: 0px 0px 20px 0px;
+    padding: 27px 0px 0px 0px;
+} */
+
+
+
+
+
+
+
+
+

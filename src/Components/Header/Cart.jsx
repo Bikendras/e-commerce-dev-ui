@@ -8,11 +8,11 @@ import axios from 'axios';
 export default function Cart() {
   const [cartData,setCartData]=useState([]);
   const email = localStorage.getItem('email');
+
   const handleProductRemove = (id)=>{
     setCartData([]);
     const formdata=new FormData();
     formdata.append("email" , email);
-
     axios.post(`http://localhost:8000/user/cardremove/${id}`, formdata).then((res)=>{
     if(res.data.status == 1){
       Swal.fire({

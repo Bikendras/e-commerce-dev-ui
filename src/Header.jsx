@@ -77,29 +77,6 @@ export default function Header() {
     },
   ];
 
-// setting ki droupdown list
-  // const setingItem = [
-  //   {
-  //     label: (
-  //       <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-  //         My Profile
-  //       </a>
-  //     ),
-  //     key: '0',
-  //   },
-  //   {
-  //     label: (
-  //       <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-  //         Help!
-  //       </a>
-  //     ),
-  //     key: '1',
-  //   },
-  //   {
-  //     type: 'divider',
-  //   },
-  // ];
-
   return (
     <div>
       {/* Search bar */}

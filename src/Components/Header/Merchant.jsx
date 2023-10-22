@@ -82,7 +82,7 @@ export default function Merchant() {
     {
       title: 'Action',
       dataIndex: "action",
-      render:()=><a onClick={()=>removeProduct("action")}><DeleteOutlined/></a>
+      
     },
   ];
   const dataSource = dataMerchant.map((x,index)=>{
@@ -92,7 +92,7 @@ export default function Merchant() {
       productPrice: `Rs.${x.productPrice}.00`,
       discount: `${x.discount}%`,
       totalprice: `Rs.${(parseInt(x.productPrice)-(parseInt(x.productPrice)*parseInt(x.discount)/100))}.00`,
-      action: x._id,
+      action:  (<><DeleteOutlined onClick={()=>removeProduct(x._id)}/></>),
     }
   })
 
@@ -117,6 +117,8 @@ export default function Merchant() {
   } 
 
   const removeProduct=(id)=>{
+    console.log("hello worked",id);
+    // return;
     setMerchantData([]);
     const formdata=new FormData();
     formdata.append("email",email);

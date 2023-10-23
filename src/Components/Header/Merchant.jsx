@@ -5,6 +5,7 @@ import {ArrowLeftOutlined, CreditCardFilled, DeleteOutlined} from "@ant-design/i
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import MerchantUpdate from './MerchantUpdate';
 
 export default function Merchant() {
   const [productname,setProductName] = useState('');
@@ -12,7 +13,6 @@ export default function Merchant() {
   const [message, setMessage] = useState("");
   const [dataMerchant, setMerchantData] =  useState([]);
   const [discount,setDiscount] = useState("");
-
 
   const email = localStorage.getItem("email");
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ export default function Merchant() {
       productPrice: `Rs.${x.productPrice}.00`,
       discount: `${x.discount}%`,
       totalprice: `Rs.${(parseInt(x.productPrice)-(parseInt(x.productPrice)*parseInt(x.discount)/100))}.00`,
-      action:  (<><DeleteOutlined onClick={()=>removeProduct(x._id)}/><Link to='/'  onClick={()=>editProduct(x._id)} style={{marginLeft: 20}} ><CreditCardFilled/></Link></>),
+      action:  (<><DeleteOutlined onClick={()=>removeProduct(x._id)}/><Link to={`/MerchantUpdate/id/${x._id}`}  onClick={()=>editProduct(x._id)} style={{marginLeft: 20}} ><CreditCardFilled/></Link></>),
     }
   })
 
@@ -201,8 +201,6 @@ const editProduct=(id)=>{
   ];
 
   // All Merchant Data get.. 
-
- 
   useEffect(()=>{
     getmarchantOrderData();
   },[email]);
@@ -211,6 +209,7 @@ const editProduct=(id)=>{
     <div>
         <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
         {/* <Table defaultActiveKey="2" getAllData={getAllData} columns={columns} items={columns} onChange={onChange} />; */}
+        {/* <MerchantUpdate id={x._id} /> */}
     </div>
   )
 }

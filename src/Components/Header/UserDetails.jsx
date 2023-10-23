@@ -4,11 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Profile from './Profile';
 
 export default function UserDetails() {
-    
-
     // Update Detailes
-
-
     const [name,setName]=useState("")
     const [address,setAddress]=useState("")
     const navigate=useNavigate();
@@ -29,7 +25,7 @@ export default function UserDetails() {
       console.log("backEnd Response Update Profile",res);
       if(res?.status===1){
         console.log("backEnd Response Update Profile",res);
-        return;
+        
         setTimeout(()=>{
           navigate("/");
         },2000);
@@ -58,7 +54,7 @@ export default function UserDetails() {
               <input type="text" value={name} name='name' placeholder='Enter name' onChange={(e) => { setName(e.target.value) }} />
             </div>
             <div className='form_group'>
-              <label htmlFor="address">Address</label>
+              <label htmlFor="address">Address</label> 
               <input type="text" value={address} name='address' placeholder='Enter address' onChange={(e) => { setAddress(e.target.value) }} />
             </div>
             <Link to=''className='addcart1'><span onClick={handleUpdate}>Update Profile</span></Link>

@@ -23,6 +23,7 @@ import OrderConfirm from './Components/Header/OrderConfirm';
 import Reducer from './Components/Reducer';
 import Merchant from './Components/Header/Merchant';
 import Profile from './Components/Header/Profile';
+import MerchantUpdate from './Components/Header/MerchantUpdate';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="reducer" element={<Reducer/>}/>
         <Route path="merchant" element={<Merchant/>}/>
         <Route path="profile" element={<Profile/>}/>
+        <Route path="MerchantUpdate/id/:_id" element={<MerchantUpdate/>}/>
         <Route path='*' element={<No_page/>}/>
         </Route>
       </Routes>

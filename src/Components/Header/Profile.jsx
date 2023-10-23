@@ -9,29 +9,16 @@ export default function Profile() {
     const [showImage,setShowImage]=useState(false);
     const email=localStorage.getItem('email');
     console.log("image data on change",email);
-    // Login user ki photo and details show kar rahe hai by function  ..
     const handleUpload = (event)=>{
-      // data ko backend pe store
       const formData= new FormData();
-      // formData.append("image",event.target.files[0]);
-      // console.log("image upload worked",event);
-      // // image ko target karke image ko display kiya jayega..
-      // setImage(event.target.files[0]);
       formData.append("image",image);
       event.preventDefault();
       axios.post(`http://localhost:8000/userImageUpload/${email}`,formData
-      // ,{header:{
-      //     Authorization: `${localStorage.getItem("token")}`,
-      //     'Content-Type':'multipart/form-data',  // it upload the file like (image ,audio, video) into the server...
-      //   },
-      // }
       ).then((res)=>{
         console.log("Uploade image succes response",res);
         
         if(res?.data.status==1){
           console.log("backend Succes response in if",res);
-          // return;
-          // setShowImage(true);
           Swal.fire({
             position: 'center',
             icon: "success",
@@ -42,7 +29,6 @@ export default function Profile() {
         }
       }).catch((error)=>{
         console.log("Uploade image error response",error);
-        // throw new Error(error);
       })
     }
   return (

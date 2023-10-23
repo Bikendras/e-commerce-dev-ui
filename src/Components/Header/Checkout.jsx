@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../ProductDetail.css';
 import { Card } from 'antd';
-import {DeliveredProcedureOutlined} from "@ant-design/icons";
+import { ArrowLeftOutlined, MinusOutlined } from "@ant-design/icons"
 import { Link, Navigate, useParams } from 'react-router-dom';
 import OrderConfirm from './OrderConfirm';
 import axios from 'axios';
@@ -139,44 +139,44 @@ export default function Checkout() {
   // Delivery time...
   var someDate = new Date();
   someDate.setDate(someDate.getDate() + 2); //number  of days to add, e.x. 15 days
-  var dateFormated = someDate.toISOString().substr(0,10);
+  var dateFormated = someDate.toISOString().substr(0, 10);
 
-  const [selectAddress,setselectAddress]=useState(false);
+  const [selectAddress, setselectAddress] = useState(false);
   const [checkoutProduct, setCheckoutProduct] = useState(""); // first of all take a params id than put id inside a checkoutProduct name this state, and take this this id sothat only that this card detrails.
   const [details, setDetails] = useState(false); // and if about the some payment Details so initial state false than take a payment details so true.
   const [selectOption, setSelectOption] = useState(""); // choice the multiple options.
-  const [iscontinue,setIscontinue] = useState(false);
+  const [iscontinue, setIscontinue] = useState(false);
   const { id } = useParams("");
-    // after login get a email in user
-    const email = localStorage.getItem("email");
-    // fetched a Address from this API...
-    useEffect(() => {
-      // after login get a email in user then run a UseEffect method
-      if (email) {
-        axios.get(`http://localhost:8000/specificUser/${email}`,
-          {
-            // main object 
-            headers: {  
-              // key Authorization me localStorage se token ko lena hai aur token ko check karna hai ki token valid hai ki nhi...
-              Authorization: `${localStorage.getItem("token")}`, 
-              // React me data ka type Application hota hai
-              "Content-Type": "Application/json", 
-            }
-          }).then((res) => {
-            // use email se token mil jata hai to backend ka data print ho jayega..
-            console.log("backend success response Fached Address", res);
-            // aur us backend ke response se ham us user ka Address nikal rahe hai..
-            setAddress(res?.data?.user_data?.address);
-          }).catch((error) => {
-            console.log("backend error response not fached Address", error);
-          })
-      }
-    }, [email]);
+  // after login get a email in user
+  const email = localStorage.getItem("email");
+  // fetched a Address from this API...
+  useEffect(() => {
+    // after login get a email in user then run a UseEffect method
+    if (email) {
+      axios.get(`http://localhost:8000/specificUser/${email}`,
+        {
+          // main object 
+          headers: {
+            // key Authorization me localStorage se token ko lena hai aur token ko check karna hai ki token valid hai ki nhi...
+            Authorization: `${localStorage.getItem("token")}`,
+            // React me data ka type Application hota hai
+            "Content-Type": "Application/json",
+          }
+        }).then((res) => {
+          // use email se token mil jata hai to backend ka data print ho jayega..
+          console.log("backend success response Fached Address", res);
+          // aur us backend ke response se ham us user ka Address nikal rahe hai..
+          setAddress(res?.data?.user_data?.address);
+        }).catch((error) => {
+          console.log("backend error response not fached Address", error);
+        })
+    }
+  }, [email]);
 
 
   useEffect(() => {
     setCheckoutProduct(productData[id - 1]);
-  },[])
+  }, [])
   // handleoptionChange
   // select the multipe options so choese the selecte one  option , so declaire the Function..
   const handleOptionChange = (e) => {
@@ -195,73 +195,77 @@ export default function Checkout() {
     }
   }
 
- // handleContinueselect option
- const handleContinue=()=>{
-  console.log("handleContinue worked");
-  setIscontinue(true); // button ke click pe next page me render karne ke liye usko true kar rahe...
-}
+  // handleContinueselect option
+  const handleContinue = () => {
+    console.log("handleContinue worked");
+    setIscontinue(true); // button ke click pe next page me render karne ke liye usko true kar rahe...
+  }
 
- // handleAddress changed
- const handleAddressChange=(e)=>{
-  console.log("handleAddress changed worked");
-  setAddress(e.target.value); // Payment_Confirm hone ke paad next page me component render hone par wah component address ki value bhi le kar jaye..
-  setselectAddress(true)
-}
+  // handleAddress changed
+  const handleAddressChange = (e) => {
+    console.log("handleAddress changed worked");
+    setAddress(e.target.value); // Payment_Confirm hone ke paad next page me component render hone par wah component address ki value bhi le kar jaye..
+    setselectAddress(true)
+  }
   return (
-    <div className='checkout'>
-      {/* {checkoutProduct.map((x)=>{ */}
-      {/* return( */}
-      <div className='Payment_product_img'>
+    <div>
+      <Link to={`/product/Id/${id}`} style={{ margin: "20px" }} ><ArrowLeftOutlined /><MinusOutlined />Back </Link>
+      <div className='checkout'>
+        {/* {checkoutProduct.map((x)=>{ */}
+        {/* return( */}
+        <div className='Payment_product_img'>
           <Card title={checkoutProduct.name}>
             <img src={`../../${checkoutProduct.image}`} alt="Product_img" className='card_img1' />
-            <h3 style={{fontWeight:"bold"}}>price: {checkoutProduct.price}</h3>
-            <h3 style={{fontWeight:"bold"}}>Discount: {checkoutProduct.Discount}</h3>
-            <h3 style={{fontWeight:"bold" ,marginBottom:"20px"}}>Total Amount: {(parseInt(checkoutProduct.price) - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</h3>
+            <h3 style={{ fontWeight: "bold" }}>price: {checkoutProduct.price}</h3>
+            <h3 style={{ fontWeight: "bold" }}>Discount: {checkoutProduct.Discount}</h3>
+            <h3 style={{ fontWeight: "bold", marginBottom: "20px" }}>Total Amount: {(parseInt(checkoutProduct.price) - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</h3>
           </Card>
-      </div>
-      {/* ) */}
-      {/* })} */}
-      <div className='payment'>
-        <h2 style={{fontWeight:"bold"}}> <img width="28" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-location-contact-us-flaticons-flat-flat-icons.png" alt="external-location-contact-us-flaticons-flat-flat-icons" ></img>
-        <span> Deliver to Address</span></h2>
-        <p><input type="radio" value={address} onChange={(e)=>{handleAddressChange(e);}}></input> <span>{address}</span></p>
-            
-        <h2 style={{fontWeight:"bold"}}><img width="28" src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/58/external-payment-options-ecommerce-basic-1-sbts2018-outline-color-sbts2018.png" alt="external-payment-options-ecommerce-basic-1-sbts2018-outline-color-sbts2018" />
-          Payment Options</h2>
-        <ul className='Description'> 
-          <li>
-            <input type="radio" name='payment' value='1' onChange={(e) => handleOptionChange(e)}></input>
-               <span style={{ margin: 5}}> <img width="28" src="https://img.icons8.com/external-beshi-line-kerismaker/48/external-Cash-on-delivery-online-shopping-beshi-line-kerismaker.png" alt="external-Cash-on-delivery-online-shopping-beshi-line-kerismaker" />Cash on Delivery</span> 
-                
-            <span className='payment_Description'>{details && selectOption == '1' ? <p className='selectBox_PaymentOption'>product price ={(parseInt(checkoutProduct.price) - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</p> : ""}</span>
-          </li>
-          <li>
-            <input type="radio" name='payment' value='2' onChange={(e) => handleOptionChange(e)} ></input>
-            <span style={{ margin: 5 }}><img width="28" src="https://img.icons8.com/color/48/bhim.png" alt="bhim" /></span> UPI
-              
-            <span>{details && selectOption == '2' ? <p className='selectBox_PaymentOption'>Product Price + delivery Charge={(parseInt(checkoutProduct.price)+50 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</p> : ""}</span>
-          </li>
-          <li>
-            <input type="radio" name='payment' value='3' onChange={(e) => handleOptionChange(e)} ></input>
-            <span style={{ margin: 5 }}><img width="28" src="https://img.icons8.com/external-kmg-design-outline-color-kmg-design/32/external-bank-business-startup-kmg-design-outline-color-kmg-design.png" alt="external-bank-business-startup-kmg-design-outline-color-kmg-design" /></span> Net Banking
-             
-            <span>{details && selectOption == '3' ? <p className='selectBox_PaymentOption'>Product price Delivery Charge + platform charge={(parseInt(checkoutProduct.price)+90 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</p> : ""}</span>
-          </li>
-        </ul>
-        {/* selection ke click hone par hi Payment_Confirm ki button show hogi*/}
-        {selectOption && selectAddress?<Link to='' onClick={handleContinue}  className='Payment__Continue'><span>Payment__Continue</span></Link>:""} 
-        {/* <Link to='order_confirmation'className='addcart1'><span>Payment__process</span></Link> */}
-        <br /><br />
-        {/* isContinue state initialy false hai then Payment__Continuebutton pe click karne pe wah true ho jayegi than fir invoice dikhane lagegi.. */}
-        {
-          iscontinue?<OrderConfirm status='1' price={
-            selectOption=="1"?(parseInt(checkoutProduct.price) - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))
-            :selectOption=="2"?(parseInt(checkoutProduct.price)+50 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))
-            :(parseInt(checkoutProduct.price)+90 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}
-            selectOption={selectOption} address={address} date={dateFormated} name={checkoutProduct.name} /> : " "
-        }
+        </div>
+        {/* ) */}
+        {/* })} */}
+        <div className='payment'>
+          <h2 style={{ fontWeight: "bold" }}> <img width="28" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-location-contact-us-flaticons-flat-flat-icons.png" alt="external-location-contact-us-flaticons-flat-flat-icons" ></img>
+            <span> Deliver to Address</span></h2>
+          <p><input type="radio" value={address} onChange={(e) => { handleAddressChange(e); }}></input> <span>{address}</span></p>
+
+          <h2 style={{ fontWeight: "bold" }}><img width="28" src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/58/external-payment-options-ecommerce-basic-1-sbts2018-outline-color-sbts2018.png" alt="external-payment-options-ecommerce-basic-1-sbts2018-outline-color-sbts2018" />
+            Payment Options</h2>
+          <ul className='Description'>
+            <li>
+              <input type="radio" name='payment' value='1' onChange={(e) => handleOptionChange(e)}></input>
+              <span style={{ margin: 5 }}> <img width="28" src="https://img.icons8.com/external-beshi-line-kerismaker/48/external-Cash-on-delivery-online-shopping-beshi-line-kerismaker.png" alt="external-Cash-on-delivery-online-shopping-beshi-line-kerismaker" />Cash on Delivery</span>
+
+              <span className='payment_Description'>{details && selectOption == '1' ? <p className='selectBox_PaymentOption'>product price ={(parseInt(checkoutProduct.price) - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</p> : ""}</span>
+            </li>
+            <li>
+              <input type="radio" name='payment' value='2' onChange={(e) => handleOptionChange(e)} ></input>
+              <span style={{ margin: 5 }}><img width="28" src="https://img.icons8.com/color/48/bhim.png" alt="bhim" /></span> UPI
+
+              <span>{details && selectOption == '2' ? <p className='selectBox_PaymentOption'>Product Price + delivery Charge={(parseInt(checkoutProduct.price) + 50 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</p> : ""}</span>
+            </li>
+            <li>
+              <input type="radio" name='payment' value='3' onChange={(e) => handleOptionChange(e)} ></input>
+              <span style={{ margin: 5 }}><img width="28" src="https://img.icons8.com/external-kmg-design-outline-color-kmg-design/32/external-bank-business-startup-kmg-design-outline-color-kmg-design.png" alt="external-bank-business-startup-kmg-design-outline-color-kmg-design" /></span> Net Banking
+
+              <span>{details && selectOption == '3' ? <p className='selectBox_PaymentOption'>Product price Delivery Charge + platform charge={(parseInt(checkoutProduct.price) + 90 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}</p> : ""}</span>
+            </li>
+          </ul>
+          {/* selection ke click hone par hi Payment_Confirm ki button show hogi*/}
+          {selectOption && selectAddress ? <Link to='' onClick={handleContinue} className='Payment__Continue'><span>Payment__Continue</span></Link> : ""}
+          {/* <Link to='order_confirmation'className='addcart1'><span>Payment__process</span></Link> */}
+          <br /><br />
+          {/* isContinue state initialy false hai then Payment__Continuebutton pe click karne pe wah true ho jayegi than fir invoice dikhane lagegi.. */}
+          {
+            iscontinue ? <OrderConfirm status='1' price={
+              selectOption == "1" ? (parseInt(checkoutProduct.price) - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))
+                : selectOption == "2" ? (parseInt(checkoutProduct.price) + 50 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))
+                  : (parseInt(checkoutProduct.price) + 90 - (parseInt(checkoutProduct.price) * parseInt(checkoutProduct.Discount) / 100))}
+              selectOption={selectOption} address={address} date={dateFormated} name={checkoutProduct.name} /> : " "
+          }
+        </div>
       </div>
     </div>
+
   )
 }
 

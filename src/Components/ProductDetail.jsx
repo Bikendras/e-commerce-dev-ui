@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ProductDetail.css';
 import { Link } from "react-router-dom";
+import { ArrowLeftOutlined, MinusOutlined } from "@ant-design/icons"
 import Swal from 'sweetalert2';
 
 
@@ -143,24 +144,24 @@ export default function ProductDetail() {
   const handleAddCard = () => {
     // Add cart Data Successfully in click to button....
     const email = localStorage.getItem('email');
-    const formdata= new FormData();
-    formdata.append("image",productData[id - 1].image);
-    formdata.append("name",productData[id - 1].name);
-    formdata.append("price",productData[id - 1].price);
-    formdata.append("Discount",productData[id - 1].Discount);
-    console.log("formdata",formdata);
-    axios.post(`http://localhost:8000/user/myaddCardApi/${email}`,formdata).then((res)=>{
-      if(res.data.status==1){
-        console.log("Add TO Card BackEnd Response",res);
+    const formdata = new FormData();
+    formdata.append("image", productData[id - 1].image);
+    formdata.append("name", productData[id - 1].name);
+    formdata.append("price", productData[id - 1].price);
+    formdata.append("discount", productData[id - 1].Discount);
+    console.log("formdata", formdata);
+    axios.post(`http://localhost:8000/user/myaddCardApi/${email}`, formdata).then((res) => {
+      if (res.data.status == 1) {
+        console.log("Add TO Card BackEnd Response", res);
         Swal.fire({
-        position: 'center',
-        icon: "success",
-        title: "Added Successfully",
-        showConfirmButton: true,
-       })
+          position: 'center',
+          icon: "success",
+          title: "Added Successfully",
+          showConfirmButton: true,
+        })
       }
-    }).catch((err)=>{
-      console.log("Add TO Card BackEnd Error",err);
+    }).catch((err) => {
+      console.log("Add TO Card BackEnd Error", err);
     });
 
   }
@@ -175,45 +176,49 @@ export default function ProductDetail() {
   console.log("id", id);
 
   return (
-    <div className='product_main1'>
-      <div className='product_img1'>
-        <div>
-          <img src={`../../${productdataDetailes.image}`} alt="Product_img" className='card_img1' />
+    <div>
+      <Link to='/' style={{ margin: "20px" }} ><ArrowLeftOutlined /><MinusOutlined />Back </Link>
+      <div className='product_main1'>
+        <div className='product_img1'>
+          <div>
+            <img src={`../../${productdataDetailes.image}`} alt="Product_img" className='card_img1' />
+          </div>
         </div>
-      </div>
-      <div className='Description'>
-        <h1 class="font-bold">{productdataDetailes.name}</h1>
-        <p>price: {productdataDetailes.price}</p>
-        <p>Discount: {productdataDetailes.Discount}</p>
-        <p style={{marginBottom:"20px"}}>Total Amount: {(parseInt(productdataDetailes.price) - (parseInt(productdataDetailes.price) * parseInt(productdataDetailes.Discount) / 100))}</p>
-        <Link to='' className='addcart1' onClick={handleAddCard}><span >Add Cart</span></Link> &nbsp; &nbsp; &nbsp;
-        <Link to={`/checkout/Id/${id}`} className='buybtn1'><span>Buy</span></Link>
-        {/* Product Description */}
-        {/* Product Details agar array me hogi tabhi sho hogi nhi to detaile nhi dikhe gi becouse conditional rendring ki gayi hai.. */}
-        <div className='Detail_1'>
-          {/* Product Amount Detail */}
-          {productdataDetailes?.Description?.length > 0 ? <span>Details:</span> : " "}
-          {productdataDetailes?.Description?.map((detail) => {
-            return (
-              <ul>
-                <li> {detail}</li>
-              </ul>
-            );
-          })}
+        <div className='Description'>
+          <h1 class="font-bold">{productdataDetailes.name}</h1>
+          <p>price: {productdataDetailes.price}</p>
+          <p>Discount: {productdataDetailes.Discount}</p>
+          <p style={{ marginBottom: "20px" }}>Total Amount: {(parseInt(productdataDetailes.price) - (parseInt(productdataDetailes.price) * parseInt(productdataDetailes.Discount) / 100))}</p>
+          <Link to='' className='addcart1' onClick={handleAddCard}><span >Add Cart</span></Link> &nbsp; &nbsp; &nbsp;
+          <Link to={`/checkout/Id/${id}`} className='buybtn1'><span>Buy</span></Link>
+          {/* Product Description */}
+          {/* Product Details agar array me hogi tabhi sho hogi nhi to detaile nhi dikhe gi becouse conditional rendring ki gayi hai.. */}
+          <div className='Detail_1'>
+            {/* Product Amount Detail */}
+            {productdataDetailes?.Description?.length > 0 ? <span>Details:</span> : " "}
+            {productdataDetailes?.Description?.map((detail) => {
+              return (
+                <ul>
+                  <li> {detail}</li>
+                </ul>
+              );
+            })}
 
-          {/* Reviews Details */}
-          {productdataDetailes?.Reviews?.length > 0 ? <span>Reviews:</span> : " "}
-          {productdataDetailes?.Reviews?.length > 0 ? productdataDetailes?.Reviews?.map((review) => {
-          return (
-            <ul>
-              <li>{review}</li>
-            </ul>
-          );
-        }) : " "}
+            {/* Reviews Details */}
+            {productdataDetailes?.Reviews?.length > 0 ? <span>Reviews:</span> : " "}
+            {productdataDetailes?.Reviews?.length > 0 ? productdataDetailes?.Reviews?.map((review) => {
+              return (
+                <ul>
+                  <li>{review}</li>
+                </ul>
+              );
+            }) : " "}
+          </div>
+          {/* Product Details agar array me hogi tabhi sho hogi nhi to detaile nhi dikhe gi becouse conditional rendring ki gayi hai.. */}
         </div>
-        {/* Product Details agar array me hogi tabhi sho hogi nhi to detaile nhi dikhe gi becouse conditional rendring ki gayi hai.. */}
       </div>
     </div>
+
   )
 }
 

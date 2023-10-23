@@ -1,15 +1,23 @@
-.product_main{
-    /* width: 96rem; */
+/* cart component... */
+/* .product_main{
     height: 25rem;
     margin: auto; 
-}
+} */
 .product_main{
     width: 23.3%;
     float: left;
     margin: 2% 1% 0% 1%;
     box-shadow: 0 0px 7px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    display: flex;
 }
+@media (max-width: 768px){
+    .product_main{
+        width: 47%;
+        float: left;
+        margin: 2% 1% 0% 1%;
+    }
+}
+
+
 .product_main1{
     width: 100%;
     height: 100%;
@@ -52,7 +60,6 @@
     width: 50%;
     margin: 1vw 2vw;
     list-style-type: none;
-    /* display: flex; */
 }
 .Description h1{
     border-bottom: 3px solid  #6CA7DD;
@@ -62,10 +69,28 @@
 .card_img1{
     width: 25vw;
     height: 50vh;
-    margin: 3%;
     object-fit: fill;
     margin: 20px 20px 0px 10px;
 }
+
+@media (max-width: 768px){
+    .product_main1{
+        display: block;
+    }
+    .product_img1{
+        width: 100%;
+    }
+    .card_img1{
+        width: 90vw;
+        margin: 10px 10px 10px 10px;
+    }
+    .Description{
+        width: 97%;
+        margin: 1vw 2vw;
+        list-style-type: none;
+    }
+}
+
 /* payment Process */
 .checkout{
     height: 100%;
@@ -105,10 +130,17 @@
     color: #000000;
     transition: 1s;
 }
-
-
-/* .imgpro img{
-    width: 100%;
-    height:240px;
-    object-fit: fill;
-} */
+@media (max-width: 768px){
+    .checkout{
+        width: 100%;
+        display: block;
+    }
+    .Payment_product_img{
+        width: 97vw;
+        margin: 5px 5px 0px 5px;
+    }
+    .payment{
+        width: 97%;
+        margin: 1%;
+    }
+}

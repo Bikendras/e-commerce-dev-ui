@@ -12,7 +12,6 @@ export default function Merchant() {
   const [message, setMessage] = useState("");
   const [dataMerchant, setMerchantData] =  useState([]);
   const [discount,setDiscount] = useState("");
-  const [totalprice , setTotalPrice] = useState("");
 
 
   const email = localStorage.getItem("email");
@@ -92,7 +91,7 @@ export default function Merchant() {
       productPrice: `Rs.${x.productPrice}.00`,
       discount: `${x.discount}%`,
       totalprice: `Rs.${(parseInt(x.productPrice)-(parseInt(x.productPrice)*parseInt(x.discount)/100))}.00`,
-      action:  (<><DeleteOutlined onClick={()=>removeProduct(x._id)}/></>),
+      action:  (<><DeleteOutlined onClick={()=>removeProduct(x._id)}/><Link to='/'  onClick={()=>editProduct(x._id)} style={{marginLeft: 20}} ><CreditCardFilled/></Link></>),
     }
   })
 
@@ -118,7 +117,6 @@ export default function Merchant() {
 
   const removeProduct=(id)=>{
     console.log("hello worked",id);
-    // return;
     setMerchantData([]);
     const formdata=new FormData();
     formdata.append("email",email);
@@ -153,6 +151,12 @@ export default function Merchant() {
     });
   }
   
+// edit Product ka logic kaise likhe 
+const editProduct=(id)=>{
+  console.log(id);
+
+}
+
   const onChange = (pagination, filters, sorter, extra,key) => {
     console.log('params', pagination, filters, sorter, extra,key );
   };

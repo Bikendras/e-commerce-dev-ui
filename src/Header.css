@@ -5,14 +5,14 @@
 }
 /* Searchbar */
 .head{
-    /* width: 100%; */
     /* background: linear-gradient(#000000, green, rgb(108, 167, 221), yellow); */
     background-color: rgb(108, 167, 221) ;
     color: white;
-    display: flex; 
+    display: flex;
+    width: 97%; 
     justify-content: space-between;
     padding-left: 1%;
-    padding-right: 20px;
+    padding-right: 2%;
     padding-bottom: 20px;
 }
 .One {
@@ -149,10 +149,12 @@
 
 /* Navbar */
 .topbar{
-    width: 100%;
-    background: #0D1824;
     display: flex;
-    justify-content:space-between;
+    width: 97%; 
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 2%;
+    background: #0D1824;
 }
 /* .topbar .active {
     color:  white;
@@ -184,29 +186,4 @@
     display: flex;
     flex-direction: column;
 }
-
-
-
-/* Left Navbar */
-/* .Category{
-    height: 100%;
-    width: 15%;
-    background-color: black;
-    font-weight: bold;
-    font-size: 20px;
-    float: left;
-    padding-bottom: 10px;   
-}
-.Category ul {
-    margin: 0px 0px 20px 0px;
-    padding: 27px 0px 0px 0px;
-} */
-
-
-
-
-
-
-
-
 

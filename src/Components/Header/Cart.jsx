@@ -47,9 +47,9 @@ export default function Cart() {
     <div>
       <div>
         {cartData.length > 0 ?
-          cartData.map((x) => {
+          cartData.map((x,i) => {
             return (
-              <div className='product_main'>
+              <div key={i} className='product_main'>
                 <Card title={x.name}>
                   <div className="imgpro">
                     <img src={`../../${x.image}`} alt="Product_img" className='card_img' />

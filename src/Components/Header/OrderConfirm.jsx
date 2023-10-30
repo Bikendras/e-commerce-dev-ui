@@ -30,7 +30,7 @@ export default function OrderConfirm(props) {
       Order_Id: orderID,
       status: "Placed"
     },{
-      headers:{
+      headers:{   
         Authorization: `${localStorage.getItem('token')}`,
         "Content-Type": "multipart/form-data",
       },

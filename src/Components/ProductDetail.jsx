@@ -166,14 +166,14 @@ export default function ProductDetail() {
 
   }
 
-  useEffect(() => {
-    console.log("Product data by id", productData[id - 1]);
+  useEffect((e) => {
+    // console.log("Product data by id", productData[id - 1]);
     // useParams se jis bhi product ki id milegi usi product ko show karege product detail pe.
     setproductdataDetailes(productData[id - 1]);
   }, []);
 
   const { id } = useParams("");
-  console.log("id", id);
+  // console.log("id", id);
 
   return (
     <div>

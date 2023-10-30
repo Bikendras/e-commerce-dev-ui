@@ -16,7 +16,7 @@ export default function Home() {
 
   const [publicHome, setPublicHome] = useState(true);
   const [role, setRole] = useState("");
-  console.log("email", email);
+  // console.log("email", email);
 
   // Product Descriptions Array of object ke form me data...
   const productData = [
@@ -106,7 +106,7 @@ export default function Home() {
     }
   ]
 
-  useEffect(() => {
+  useEffect((e) => {
     if (email) {
       // setPublicHome(false);
       axios.get(`http://localhost:8000/specificUser/${email}`, {
@@ -226,10 +226,10 @@ export default function Home() {
               (
                 // Customer Data page..
                 // navigate('/Home_main')
-                productData.map((x) => {
+                productData.map((x,i) => {
                   return (
                     <>
-                      <div className='main-card'>
+                      <div key={i} className='main-card'>
                         <div className='main-card2'>
                           {/* ProductDetail component ka path dita gaya hai Aur es component se ID ko Dynamic liya ja raha hai. */}
                           <Link to={`/product/Id/${x.id}`}>

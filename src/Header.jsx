@@ -7,9 +7,10 @@ import Footer from './Footer';
 import { LogoutOutlined, LoginOutlined, DownOutlined, SettingOutlined, UserOutlined, SearchOutlined, ProfileOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Button, Input, Tooltip } from 'antd';
 import axios from 'axios';
+import SearchBar from './SearchBar';
 
 // antd se search box ko create karne ke onSearch name ka variable liya hai
-const { Search } = Input;
+// const { Search } = Input;
 const onSearch = (value) => console.log(value);
 
 
@@ -85,10 +86,9 @@ export default function Header() {
           <span className='One'>OneTech+</span>
 
           <div className='log_1'>
-            <Search placeholder="Search products..." onSearch={onSearch} enterButton />
+            {/* <Search type='text' placeholder="Search products..." onChange={handlesearchChange} value={searchQuery} onSearch={onSearch}enterButton /> */}
+            <SearchBar onSearchChange={onSearch} />
 
-            {/* <input type="search" name='search' className="search__input" placeholder='Search products...' />
-            <Link to=""><img src={Search} className='search_img' alt="" /></Link> */}
           </div>
 
           <div className='login_cart_customer'>
@@ -143,7 +143,8 @@ export default function Header() {
               </li>
               <li><NavLink style={({ isActive }) => { return { color: isActive ? 'green' : '' } }} to="/about">About_Us</NavLink></li>
               <li><NavLink style={({ isActive }) => { return { color: isActive ? 'green' : '' } }} to="/contact">Contact_Us</NavLink></li>
-              {/* <li><NavLink style={({ isActive }) => { return { color: isActive ? 'green' : '' } }} to="/product">Product</NavLink></li> */}
+              {/* <li><NavLink to='/'>home</NavLink></li>
+              <li><NavLink to='/about'>About_us</NavLink></li> */}
             </ul>
           </nav>
           {/* setting ka icon */}

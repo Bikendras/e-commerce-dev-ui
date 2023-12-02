@@ -82,7 +82,7 @@ export default function Login() {
                          
                          {
                             // agar getMessage true hota hai to output me ye mesage and status ke Accourding pop-up Show hoga. Message Component ka..
-                            getMessage?<Message message={message} status={status}/>:""
+                            getMessage?<Message message={message} status={status} />:""
                          }
                     </div>
                 </fieldset>

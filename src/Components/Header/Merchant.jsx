@@ -13,6 +13,7 @@ export default function Merchant() {
   const [message, setMessage] = useState("");
   const [dataMerchant, setMerchantData] =  useState([]);
   const [discount,setDiscount] = useState("");
+  // const [image,setImage] = useState(null);
 
   const email = localStorage.getItem("email");
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export default function Merchant() {
     formData.append("productname",productname);
     formData.append("productPrice",productPrice);
     formData.append("discount",discount);
+    // formData.append("image",image);
     console.log("formdata",formData);
 
     axios.post(`http://localhost:8000/MarchantProductInsert/${email}`, formData,{
@@ -78,10 +80,13 @@ export default function Merchant() {
       title: 'TotalPrice',
       dataIndex: 'totalprice',
     },
+    // {
+    //   title: 'Image',
+    //   dataIndex: 'image',
+    // },
     {
       title: 'Action',
       dataIndex: "action",
-      
     },
   ];
   const dataSource = dataMerchant.map((x,index)=>{
@@ -90,6 +95,7 @@ export default function Merchant() {
       productname:x.productname,
       productPrice: `Rs.${x.productPrice}.00`,
       discount: `${x.discount}%`,
+      // image: (<img src={x.image} style={{ width: '50px', height: "50px", borderRadius: '50%' }} />),
       totalprice: `Rs.${(parseInt(x.productPrice)-(parseInt(x.productPrice)*parseInt(x.discount)/100))}.00`,
       action:  (<><DeleteOutlined onClick={()=>removeProduct(x._id)}/><Link to={`/MerchantUpdate/id/${x._id}`}  onClick={()=>editProduct(x._id)} style={{marginLeft: 20}} ><CreditCardFilled/></Link></>),
     }
@@ -181,6 +187,10 @@ const editProduct=(id)=>{
               <label htmlFor='discount'>Discount</label>
               <input type="number" value={discount} name="discount" onChange={(e)=>{setDiscount(e.target.value)}} />
             </div>
+            {/* <div className='marchant_form_group1'>
+              <label htmlFor='image'>Image</label>
+              <input type="file"  name="image" onChange={(e)=>setImage(e.target.files[0])} />
+            </div> */}
             <div className='marchant_button1'>
              {productname.length>0&&productPrice.length>0&&discount>0?<button onClick={handlesubmitProduct}>submit</button>:<button style={{cursor:"not-allowed"}}>submit</button>}  <br/>
             </div>

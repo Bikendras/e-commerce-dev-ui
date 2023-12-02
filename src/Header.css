@@ -156,10 +156,9 @@
     padding-right: 2%;
     background: #0D1824;
 }
-/* .topbar .active {
-    color:  white;
-    background-color: #e6331b;
-    padding: 20px 15px 20px 15px;
+/* .nav ul li a.active {
+    color:  #6CA7DD;
+    border-bottom: 2px solid #ffffff;
 } */
 
 .topbar .active:hover{

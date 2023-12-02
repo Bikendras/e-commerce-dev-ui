@@ -3,6 +3,7 @@ import { Card, Carousel,Tabs } from 'antd';
 import './Home.css';
 import axios from 'axios';
 import { Link, useNavigate, } from 'react-router-dom';
+import SearchBar from '../../SearchBar';
 const { Meta } = Card;
 
 const gridStyle = {
@@ -16,6 +17,7 @@ export default function Home() {
 
   const [publicHome, setPublicHome] = useState(true);
   const [role, setRole] = useState("");
+  const [prodByName, setprodByName] = useState("");
   // console.log("email", email);
 
   // Product Descriptions Array of object ke form me data...
@@ -223,9 +225,8 @@ export default function Home() {
                     {navigate("/merchant")}
                   </div>
             :
-              (
-                // Customer Data page..
-                // navigate('/Home_main')
+            (
+
                 productData.map((x,i) => {
                   return (
                     <>

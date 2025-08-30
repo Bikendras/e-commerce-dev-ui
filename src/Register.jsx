@@ -112,7 +112,7 @@ export default function Register() {
               <input type="checkbox" onChange={(e) => {
                 handleCheckbox(e);
               }}
-                value={checkbox} name='checkbox' id='checkbox' 
+                value={checkbox} name='checkbox' id='checkbox'
               />
               All terms and Conditions are accepted.
             </div>

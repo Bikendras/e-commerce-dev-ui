@@ -114,7 +114,7 @@ export default function Home() {
       axios.get(`http://localhost:8000/specificUser/${email}`, {
         headers: {
           Authorization: `${localStorage.getItem('token')}`,
-          "Content-Type": "application/json",
+          "Content-Type": "application/json", 
         },
       })
         .then((res) => {

@@ -23,7 +23,12 @@ export default function Login() {
         formData.append("password",password);
         console.log("login Function called");
 
-        axios.post("http://localhost:8000/login",formData)
+        axios.post("http://localhost:8000/login",formData, {
+          headers: {
+            Authorization: `${localStorage.getItem("token")}`,
+            "Content-Type": "Application/json",
+          }
+        })
         .then((res)=>{
             console.log("backend response",res);
             // condition ke true hon par backend ka message print karega..

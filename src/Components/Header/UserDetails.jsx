@@ -42,7 +42,7 @@ export default function UserDetails() {
 
   return (
     <div>
-        {/* <Profile/> */}
+        <Profile/>
         <h1>Update Profile</h1><br />
 
             <div className='form_group'>
